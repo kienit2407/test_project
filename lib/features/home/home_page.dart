@@ -20,58 +20,62 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      key: const PageStorageKey('home-scroll'),
+    return Padding(
       padding: EdgeInsets.symmetric(vertical: 16.h),
-      children: [
-        //banner
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.w),
-          child: Image.asset(
-            'assets/images/banner_phu.png',
-            width: double.infinity,
-            fit: BoxFit.fitWidth,
-          ),
+      child: SingleChildScrollView(
+        child: Column(
+          key: const PageStorageKey('home-scroll'),
+          children: [
+            //banner
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.w),
+              child: Image.asset(
+                'assets/images/banner_phu.png',
+                width: double.infinity,
+                fit: BoxFit.fitWidth,
+              ),
+            ),
+            // Danh mục tiêu biểu.
+            SizedBox(height: 18.h),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.w),
+              child: CategorySection(onCategoryTap: onCategoryTap),
+            ),
+            // Banner quảng cáo.
+            SizedBox(height: 18.h),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.w),
+              child: const BannerSmallSection(
+                imageAssets: HomeMockData.carouselBannerImages,
+              ),
+            ),
+            // Flash sale.
+            SizedBox(height: 24.h),
+            const FlashSaleSection(),
+            // Thương hiệu nổi bật.
+            SizedBox(height: 24.h),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.w),
+              child: const BrandSection(),
+            ),
+            // Sản phẩm bán chạy.
+            SizedBox(height: 24.h),
+            const BestSellerSection(),
+            // Khuyến mãi.
+            SizedBox(height: 24.h),
+            const PromotionSection(),
+            // Dành cho bạn.
+            SizedBox(height: 24.h),
+            const RecommendedSection(),
+            // Hàng mới về.
+            SizedBox(height: 24.h),
+            const NewArrivalsSection(),
+            // Bài viết nổi bật.
+            SizedBox(height: 24.h),
+            const ArticleSection(),
+          ],
         ),
-        // Danh mục tiêu biểu.
-        SizedBox(height: 18.h),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.w),
-          child: CategorySection(onCategoryTap: onCategoryTap),
-        ),
-        // Banner quảng cáo.
-        SizedBox(height: 18.h),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.w),
-          child: const BannerSmallSection(
-            imageAssets: HomeMockData.carouselBannerImages,
-          ),
-        ),
-        // Flash sale.
-        SizedBox(height: 24.h),
-        const FlashSaleSection(),
-        // Thương hiệu nổi bật.
-        SizedBox(height: 24.h),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.w),
-          child: const BrandSection(),
-        ),
-        // Sản phẩm bán chạy.
-        SizedBox(height: 24.h),
-        const BestSellerSection(),
-        // Khuyến mãi.
-        SizedBox(height: 24.h),
-        const PromotionSection(),
-        // Dành cho bạn.
-        SizedBox(height: 24.h),
-        const RecommendedSection(),
-        // Hàng mới về.
-        SizedBox(height: 24.h),
-        const NewArrivalsSection(),
-        // Bài viết nổi bật.
-        SizedBox(height: 24.h),
-        const ArticleSection(),
-      ],
+      ),
     );
   }
 }
